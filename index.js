@@ -1,9 +1,13 @@
 const express = require("express");
 
-const users = require("./routes/users");
+const logger = require("./middleware/logger");
 
 const app = express();
 const port = 3000;
+
+app.use(logger);
+
+const users = require("./routes/users");
 
 app.use(express.static("public"));
 
