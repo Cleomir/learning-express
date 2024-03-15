@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 app.use("/api", users);
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send("Something went wrong");
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
